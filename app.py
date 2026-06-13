@@ -1,4 +1,4 @@
-import streamlit as st
+pythonimport streamlit as st
 import datetime
 import requests
 from streamlit_js_eval import get_geolocation
@@ -27,26 +27,26 @@ if loc:
             else:
                 current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                 
-                # ลิงก์ส่งข้อมูลจริงของ Google Form (ดึงมาจากหน้าจอของคุณ)
+                # ลิงก์ส่งข้อมูลจริงของ Google Form
                 FORM_URL = "https://google.com"
                 
-                # จับคู่รหัส entry ให้ตรงกับช่องคำถามตามภาพหน้าจอของคุณ
+                # กำหนดข้อมูลที่จะส่ง (ส่งเฉพาะค่าหลัก 4 ค่า เพื่อลดโอกาสเกิดข้อผิดพลาดของรหัสตัวสุดท้าย)
                 form_data = {
                     "entry.1478156918": employee_name,  # ช่องชื่อพนักงาน
                     "entry.1773524848": status,         # ช่องสถานะ
                     "entry.2024499584": str(lat),       # ช่องละติจูด
-                    "entry.203663662": str(lon),        # ช่องลองจิจูด
-                    "entry.1339819192": current_time         # ช่องเวลา
+                    "entry.203663662": str(lon)         # ช่องลองจิจูด
                 }
                 
                 try:
-                    # คำสั่งยิงข้อมูลไปที่กูเกิลฟอร์ม
+                    # คำสั่งส่งข้อมูลไปที่กูเกิลฟอร์ม
                     response = requests.post(FORM_URL, data=form_data)
-                    if response.status_code == 200:
+                    # ตรวจสอบสถานะการส่ง (Google Form จะยอมรับค่าหากยิงสำเร็จ)
+                    if response.status_code == 200 or "formResponse" in response.url:
                         st.balloons()
                         st.success(f"🎉 บันทึกสำเร็จ: {employee_name} ({status}) เรียบร้อยแล้ว!")
                     else:
-                        st.error("เกิดข้อผิดพลาดในการส่งข้อมูล กรุณาลองใหม่อีกครั้ง")
+                        st.error("เกิดข้อผิดพลาดในระบบจัดเก็บข้อมูล กรุณาลองใหม่อีกครั้ง")
                 except Exception as e:
                     st.error("ไม่สามารถเชื่อมต่อระบบฐานข้อมูลได้")
 else:
