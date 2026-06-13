@@ -20,7 +20,7 @@ if loc:
     
     if employee_name.strip() != "":
         # โครงสร้างลิงก์สำหรับเปิดหน้า Google Form และกรอกข้อมูลอัตโนมัติ
-        base_url = https://docs.google.com/spreadsheets/d/1UgK4BMwkMbAY7ZThP8d7NjK1l9Ye-NgZZqnlCRvmg-M/edit?usp=sharing
+        base_url = www.google.com
         
         final_link = (
             f"{base_url}?usp=pp_url"
