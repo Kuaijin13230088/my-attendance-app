@@ -1,4 +1,4 @@
-pythonimport streamlit as st
+import streamlit as st
 import datetime
 import requests
 from streamlit_js_eval import get_geolocation
