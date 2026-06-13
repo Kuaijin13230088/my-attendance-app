@@ -36,7 +36,7 @@ if loc:
                     "entry.1773524848": status,         # ช่องสถานะ
                     "entry.2024499584": str(lat),       # ช่องละติจูด
                     "entry.203663662": str(lon),        # ช่องลองจิจูด
-                    "entry.13398": current_time         # ช่องเวลา
+                    "entry.1339819192": current_time         # ช่องเวลา
                 }
                 
                 try:
